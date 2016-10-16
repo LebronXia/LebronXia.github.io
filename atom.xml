@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-16T06:40:00.670Z</updated>
+  <updated>2016-10-16T07:57:00.793Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,100 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Android开发艺术探索笔记》-Activity的启动方式</title>
+    <link href="http://yoursite.com/blog/%E3%80%8AAndroid%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2%E7%AC%94%E8%AE%B0%E3%80%8B-Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F20161016/"/>
+    <id>http://yoursite.com/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/</id>
+    <published>2016-10-16T07:38:14.000Z</published>
+    <updated>2016-10-16T07:57:00.793Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="（一）生命周期和启动模式"><a href="#（一）生命周期和启动模式" class="headerlink" title="（一）生命周期和启动模式"></a>（一）生命周期和启动模式</h2><h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h3><blockquote>
+<p>启动Activity相当于启动一个任务栈，默认模式下，系统每次都会创建一个实例放入任务栈中<code>任务栈是一种“后进先出的</code>的栈结构：四种启动模式：<strong>standard</strong>、<strong>singleTop*、</strong>singleTask<strong>、</strong>SingleInstance**</p>
+</blockquote>
+<ol>
+<li><code>stanndrd</code>:有个细节是当我们用ApplicationContext启动standard模式的Activity会报错。是因为在这种模式下默认会启动它的Activity所属的任务栈。由于ApplicationContext非Activity所指定的Context,可以采用FLAG_ACTIVITY_NEW_TASK</li>
+<li><code>singleTop</code>:栈顶复用模式。如果新的Activity已经位于任务栈的栈顶，那么Activity不会被重建，同时onNewIntent方法会被调用。</li>
+<li><code>SingleTask</code>这种模式下，只要Activity在一个栈中存在，多次启动Activity不会重新创建实例，和singTop一样也是会调用onNewIntent方法。（在置顶过程中，singleTask会将目标activity以上的Activity全部出栈）</li>
+<li><code>singleInstance</code>此种模式下的activity只能单独的位于一个任务栈中</li>
+</ol>
+<p>其中当任务栈中有个参数：TaskActivity，这个参数标识了一个Activity所需要的任务栈名字。在singleTask和TaskActivity配对启动模式时，待启动的Activity会运行在名字相同的任务栈中。<code>TaskActivity默认为应用包名</code></p>
+<h3 id="匹配规则"><a href="#匹配规则" class="headerlink" title="匹配规则"></a>匹配规则</h3><ol>
+<li><code>action</code>:action的匹配必须要求Intent中的action存在且和过滤规则中的其中一个action相同，而且区分大小写。</li>
+<li><code>category</code>Intent里可以没有category，如果含有category，所有的category都必须和过滤规则中的其中给一个category相同。（不要写category的原因，是Intent默认会加上“category.DEFAULT这个category）</li>
+<li><code>data</code>由两部分组成，mimeType和URI。mimeType值媒体类型，比如image/jpeg、audio/mpeg4-generic和video/*等，可以表示文字、图片、视屏等。而URI表示，默认<code>content://</code> 和<code>http://</code></li>
+</ol>
+<h2 id="（二）IPC机制"><a href="#（二）IPC机制" class="headerlink" title="（二）IPC机制"></a>（二）IPC机制</h2><p>设置进程主要是设置process属性，意味着他新增加了一个进程。（当没有指定process属性的时候，它运行在默认进程中，默认进程的进程名及时它包名。）其次，进程名以“：”开头的进程属于当前应用的私有进程，其他组件不可以跑在这一进程。不同进程间不可以共享数据。使用多线程会造成如下原因：</p>
+<ul>
+<li>静态成员和单例模式完全失效</li>
+<li>线程同步机制完全失效</li>
+<li>SharePreferences的可靠性下降</li>
+<li>Application会多次创建<h3 id="IPC基础介绍"><a href="#IPC基础介绍" class="headerlink" title="IPC基础介绍"></a>IPC基础介绍</h3></li>
+</ul>
+<ol>
+<li>Serializable接口<br>是Java所提供的一个序列化接口要，是一个空接口，为对象提供序列化和反序列化操作。<br>建议：要手动指定serialVersionUID的值，比如1L,也可以让Eclipse根据当前类的结构自动生成hash的值，可以实现正常反序列化。</li>
+<li>Parcelable接口<br>| 方法 |功能 |标记位 |<br>| :– |–: |:–: |<br>| createFormParcel |从序列化后的对象创建原始对象 | |<br>| newArray(int size) |创建指定长度的原始对象数组 | |<br>| User(Parel in) | 从序列化后的对象中创建原始对象 | |<br>| writeToParcel | 将对象写入序列化结构中 | |<br>| describeCiontents | 返回当前的内容描述，如果有描述符，返回1，否则返回0 | |<blockquote>
+<p>Parcelable和Serializable的区别：需要大量I/O操作的时候，首选Parceleble。在存储设备和网络传输的时候建议使用Serializable.</p>
+</blockquote>
+</li>
+</ol>
+<p>3.Binder<br>是一中搞跨进程通信方式。<br>工作机制在<code>P54</code> Binder方法不管是否耗时都应该采用同步的方式去实现，因为它已经运行在一个线程上了<br><img src="http://of4qb6dm4.bkt.clouddn.com/Binder%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.jpg" alt="Binder工作机制"></p>
+<h3 id="IPC方式"><a href="#IPC方式" class="headerlink" title="IPC方式"></a>IPC方式</h3><ol>
+<li>使用Bundle<br>Bundle实现了Paracleable接口，所以它可以方便地在不同的进程间传输。当两个进程间需要通信时，可以启动Servicee后台运行，后传递给另外一个线程</li>
+<li>使用文件共享<br>共享文件是一种进程间通信的方式，两个进程通过读/写同一个文件来交换数据，比如A进程把数据写入A文件，B进程通过读取这个文件来获取数据（适合用在数据同步不高的进程之间进行通信<code>不建议进程间通信中使用SharedPreferences</code>）</li>
+<li>使用Messenger<br>它是对AIDL进行简单的封装。由于它一次处理一个请求，因此在服务端我们不用考虑线程同步的问题。<code>类似于Handler机制</code>实现Messenger分两步：</li>
+</ol>
+<ul>
+<li>服务端进程</li>
+<li>客户端进程</li>
+</ul>
+<p><a href="http://blog.csdn.net/ducklikejava/article/details/51559244" target="_blank" rel="external">AndroidStudio 使用AIDL</a><br><a href="http://blog.csdn.net/guanhang89/article/details/51386404" target="_blank" rel="external">Android Studio AIDL创建案例（解决自动生成java问题）</a></p>
+<p><img src="http://of4qb6dm4.bkt.clouddn.com/Message%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.jpg" alt="Messenger工作原理"></p>
+<ol>
+<li>使用AIDL<br>当需要跨进程的方法来调用服务端的方法的时候，Messenger无法办到，可以使用AIDL来实现跨进程间的方法调用。</li>
+</ol>
+<blockquote>
+<p>注意点：</p>
+<ol>
+<li>而如果需要在AIDL中使用其他AIDL接口类型，需要import，即使是在相同包结构下。AIDL允许传递实现Parcelable接口的类，需要import.<br> 需要特别注意的是，对于非基本数据类型，也不是String和CharSequence类型的，<code>需要有方向指示，包括in、out和inout</code>，in表示由客户端设置，out表示由服务端设置，inout是两者均可设置。<strong>(这个Bug找了半天就是没加in)</strong></li>
+<li>同时必须要指明包名，包名必须和java目录下的包名一致。</li>
+</ol>
+</blockquote>
+<p><strong>使用AIDL完成实现跨进程的方法调用</strong></p>
+<ul>
+<li>进程间的通信的流程，分为服务端和客户端</li>
+<li>IDL中每个实现了Parcelable接口的类都需要按照上面方式去创建相应的AIDL文件并声明那个类为parcelable.</li>
+<li>AIDL除了支持基本类型，其他类型的参数必须实现标上方向：in、out或者inout, in表示输入型参数，out表示输出型参数，inout表示输入输出型参数。</li>
+<li>在开发时，必须保证AIDL包结构在服务端和客户端要保持一致。</li>
+<li>在服务端，<code>AIDL是在服务端的Binder线程中执行的</code>,因此当多个客户端同时连接的时候，会存在多个线程同时访问的情形，所以要在AIDL方法中处理线程同步，可以使用CopyOnWriterArrayList。</li>
+<li>能跨进程直接传输，而跨进程传输本质都是反序列化的过程。可以使用RemoteCallbacklistener提供用于删除跨进程listener的接口。原理：它们底层的BInder对象都是同一个。</li>
+<li>服务端的方法运行在服务端的Binder线程池里，可以执行大量耗时操作</li>
+<li>接口的方法运行在客户端的Binder线程池中，不能再它里面去访问UI相关内容</li>
+<li>BInder意外死亡的解决办法( <code>客户端通过IBinder.DeathRecipient来监听Binder死亡，也可以在onServiceDisconnected中监听并重连服务端。区别在于前者是在binder线程池中，访问UI需要用Handler，后者则是UI线程。</code> )</li>
+<li>对AIDL进行权限验证P90(<code>可通过自定义权限在onBind或者onTransact中进行权限验证</code>)</li>
+</ul>
+<ol>
+<li>使用ContentProvider用于不同应用间进行数据共享的方式</li>
+<li>使用Socket进行网络共享<h3 id="Binder连接池"><a href="#Binder连接池" class="headerlink" title="Binder连接池"></a>Binder连接池</h3><strong>工作机制</strong>：每个业务模块创建自己的AIDL接口并实现此接口。这个时候不同业务模块之间是不能有耦合的，所有实现细节我们要单独开来，然后问服务端提供自己的唯一标识和其对应的BInder对象了对于服务端来说，只需要一个Service就可以了，服务端提供一个queryBinder接口。</li>
+</ol>
+<ul>
+<li>在Binder线程会中使用CountDown将bindService这一异步转换为同步操作。可能耗时，所以开启线程操作。</li>
+<li>BinderPool有断线重连的机制</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;（一）生命周期和启动模式&quot;&gt;&lt;a href=&quot;#（一）生命周期和启动模式&quot; class=&quot;headerlink&quot; title=&quot;（一）生命周期和启动模式&quot;&gt;&lt;/a&gt;（一）生命周期和启动模式&lt;/h2&gt;&lt;h3 id=&quot;启动模式&quot;&gt;&lt;a href=&quot;#启动模式&quot; cla
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Activity" scheme="http://yoursite.com/tags/Activity/"/>
+    
+  </entry>
   
   <entry>
     <title>夏目text</title>

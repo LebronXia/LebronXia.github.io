@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android,Activity," />
 
 
 
@@ -86,15 +86,31 @@
 
 
 
-<meta name="description" content="纸上得来终觉浅，绝知此事要躬行">
-<meta property="og:type" content="website">
-<meta property="og:title" content="夏目’s HOME">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="（一）生命周期和启动模式启动模式
+启动Activity相当于启动一个任务栈，默认模式下，系统每次都会创建一个实例放入任务栈中任务栈是一种“后进先出的的栈结构：四种启动模式：standard、singleTop*、singleTask、SingleInstance**
+
+
+stanndrd:有个细节是当我们用ApplicationContext启动standard模式的Activity会报错。是因为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Android开发艺术探索笔记》-Activity的启动方式">
+<meta property="og:url" content="http://yoursite.com/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/index.html">
 <meta property="og:site_name" content="夏目’s HOME">
-<meta property="og:description" content="纸上得来终觉浅，绝知此事要躬行">
+<meta property="og:description" content="（一）生命周期和启动模式启动模式
+启动Activity相当于启动一个任务栈，默认模式下，系统每次都会创建一个实例放入任务栈中任务栈是一种“后进先出的的栈结构：四种启动模式：standard、singleTop*、singleTask、SingleInstance**
+
+
+stanndrd:有个细节是当我们用ApplicationContext启动standard模式的Activity会报错。是因为">
+<meta property="og:image" content="http://of4qb6dm4.bkt.clouddn.com/Binder%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.jpg">
+<meta property="og:image" content="http://of4qb6dm4.bkt.clouddn.com/Message%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.jpg">
+<meta property="og:updated_time" content="2016-10-16T07:57:00.793Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="夏目’s HOME">
-<meta name="twitter:description" content="纸上得来终觉浅，绝知此事要躬行">
+<meta name="twitter:title" content="《Android开发艺术探索笔记》-Activity的启动方式">
+<meta name="twitter:description" content="（一）生命周期和启动模式启动模式
+启动Activity相当于启动一个任务栈，默认模式下，系统每次都会创建一个实例放入任务栈中任务栈是一种“后进先出的的栈结构：四种启动模式：standard、singleTop*、singleTask、SingleInstance**
+
+
+stanndrd:有个细节是当我们用ApplicationContext启动standard模式的Activity会报错。是因为">
+<meta name="twitter:image" content="http://of4qb6dm4.bkt.clouddn.com/Binder%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6.jpg">
 
 
 
@@ -115,10 +131,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/"/>
 
 
-  <title> 夏目’s HOME </title>
+  <title> 《Android开发艺术探索笔记》-Activity的启动方式 | 夏目’s HOME </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -139,9 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -248,9 +262,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -270,10 +284,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/" itemprop="url">
-                  《Android开发艺术探索笔记》-Activity的启动方式
-                </a>
+                《Android开发艺术探索笔记》-Activity的启动方式
               
             
           </h1>
@@ -320,9 +331,7 @@
       
 
       
-        
-          
-            <h2 id="（一）生命周期和启动模式"><a href="#（一）生命周期和启动模式" class="headerlink" title="（一）生命周期和启动模式"></a>（一）生命周期和启动模式</h2><h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h3><blockquote>
+        <h2 id="（一）生命周期和启动模式"><a href="#（一）生命周期和启动模式" class="headerlink" title="（一）生命周期和启动模式"></a>（一）生命周期和启动模式</h2><h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h3><blockquote>
 <p>启动Activity相当于启动一个任务栈，默认模式下，系统每次都会创建一个实例放入任务栈中<code>任务栈是一种“后进先出的</code>的栈结构：四种启动模式：<strong>standard</strong>、<strong>singleTop*、</strong>singleTask<strong>、</strong>SingleInstance**</p>
 </blockquote>
 <ol>
@@ -395,252 +404,98 @@
 <li>BinderPool有断线重连的机制</li>
 </ul>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/夏目text20161016/" itemprop="url">
-                  夏目text
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T14:38:47+08:00" content="2016-10-16">
-              2016-10-16
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/夏目text20161016/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/夏目text20161016/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Activity/" rel="tag">#Activity</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+              <a href="/blog/夏目text20161016/" rel="next" title="夏目text">
+                <i class="fa fa-chevron-left"></i> 夏目text
+              </a>
             
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-              
-                
-                <a class="post-title-link" href="/blog/hello-world20160417/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T23:55:13+08:00" content="2016-04-17">
-              2016-04-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/hello-world20160417/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/hello-world20160417/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/"
+     data-title="《Android开发艺术探索笔记》-Activity的启动方式"
+     data-content=""
+     data-url="http://yoursite.com/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/"
+           data-title="《Android开发艺术探索笔记》-Activity的启动方式" data-url="http://yoursite.com/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -660,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://of4qb6dm4.bkt.clouddn.com/239943-106.jpg"
@@ -740,6 +604,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#（一）生命周期和启动模式"><span class="nav-number">1.</span> <span class="nav-text">（一）生命周期和启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动模式"><span class="nav-number">1.1.</span> <span class="nav-text">启动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配规则"><span class="nav-number">1.2.</span> <span class="nav-text">匹配规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（二）IPC机制"><span class="nav-number">2.</span> <span class="nav-text">（二）IPC机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC基础介绍"><span class="nav-number">2.1.</span> <span class="nav-text">IPC基础介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC方式"><span class="nav-number">2.2.</span> <span class="nav-text">IPC方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binder连接池"><span class="nav-number">2.3.</span> <span class="nav-text">Binder连接池</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -836,6 +711,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
