@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-16T07:57:00.793Z</updated>
+  <updated>2018-05-26T13:41:09.001Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>filename</title>
+    <link href="http://yoursite.com/blog/filename20180526/"/>
+    <id>http://yoursite.com/blog/filename20180526/</id>
+    <published>2018-05-26T13:41:08.000Z</published>
+    <updated>2018-05-26T13:41:09.001Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>《Android开发艺术探索笔记》-Activity的启动方式</title>
     <link href="http://yoursite.com/blog/%E3%80%8AAndroid%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2%E7%AC%94%E8%AE%B0%E3%80%8B-Activity%E7%9A%84%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F20161016/"/>
     <id>http://yoursite.com/blog/《Android开发艺术探索笔记》-Activity的启动方式20161016/</id>
     <published>2016-10-16T07:38:14.000Z</published>
-    <updated>2016-10-16T07:57:00.793Z</updated>
+    <updated>2016-10-16T07:57:00.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="（一）生命周期和启动模式"><a href="#（一）生命周期和启动模式" class="headerlink" title="（一）生命周期和启动模式"></a>（一）生命周期和启动模式</h2><h3 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h3><blockquote>
 <p>启动Activity相当于启动一个任务栈，默认模式下，系统每次都会创建一个实例放入任务栈中<code>任务栈是一种“后进先出的</code>的栈结构：四种启动模式：<strong>standard</strong>、<strong>singleTop*、</strong>singleTask<strong>、</strong>SingleInstance**</p>
@@ -114,7 +128,7 @@
     <link href="http://yoursite.com/blog/%E5%A4%8F%E7%9B%AEtext20161016/"/>
     <id>http://yoursite.com/blog/夏目text20161016/</id>
     <published>2016-10-16T06:38:47.000Z</published>
-    <updated>2016-10-16T06:40:00.670Z</updated>
+    <updated>2016-10-16T06:40:00.000Z</updated>
     
     <summary type="html">
     
@@ -129,10 +143,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/blog/hello-world20160417/"/>
-    <id>http://yoursite.com/blog/hello-world20160417/</id>
-    <published>2016-04-17T15:55:13.785Z</published>
-    <updated>2016-10-15T16:07:29.165Z</updated>
+    <link href="http://yoursite.com/blog/hello-world20161016/"/>
+    <id>http://yoursite.com/blog/hello-world20161016/</id>
+    <published>2016-10-15T16:07:28.000Z</published>
+    <updated>2016-10-15T16:07:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
