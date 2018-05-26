@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-26T13:41:09.001Z</updated>
+  <updated>2016-10-16T07:57:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,20 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>filename</title>
-    <link href="http://yoursite.com/blog/filename20180526/"/>
-    <id>http://yoursite.com/blog/filename20180526/</id>
-    <published>2018-05-26T13:41:08.000Z</published>
-    <updated>2018-05-26T13:41:09.001Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>《Android开发艺术探索笔记》-Activity的启动方式</title>
@@ -120,24 +106,6 @@
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
       <category term="Activity" scheme="http://yoursite.com/tags/Activity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>夏目text</title>
-    <link href="http://yoursite.com/blog/%E5%A4%8F%E7%9B%AEtext20161016/"/>
-    <id>http://yoursite.com/blog/夏目text20161016/</id>
-    <published>2016-10-16T06:38:47.000Z</published>
-    <updated>2016-10-16T06:40:00.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="Testing" scheme="http://yoursite.com/tags/Testing/"/>
-    
-      <category term="Another Tag" scheme="http://yoursite.com/tags/Another-Tag/"/>
     
   </entry>
   
